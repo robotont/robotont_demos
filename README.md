@@ -1,11 +1,11 @@
 # robotont\_demos
 This repository is a ROS package that contains various demos showing the capabilities of the Robotont platform
 
-[![Build Status](https://travis-ci.org/robotont/robotont_demos.svg?branch=melodic-devel)](https://travis-ci.org/robotont/robotont_demos)
+[![Build Status](https://github.com/robotont/robotont_demos/actions/workflows/industrial_ci_action.yml/badge.svg)](https://github.com/robotont/robotont_demos/actions/workflows/industrial_ci_action.yml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Before you begin
-To run the demos it is necessary to have a Robotont robot and a user PC with Ubuntu Linux and ROS Melodic installed.
+To run the demos it is necessary to have a Robotont robot and a user PC with Ubuntu Linux and ROS Noetic installed.
 
 There are two approaches to get the Robotont and PC into the same ROS environment. A common prerequisite for both methods is that the hosts are connected to the same network. In the following examples, we assume the Robotont and the PC having the following configuration:
 
@@ -61,18 +61,17 @@ Similarly to the hostname based setup, append the commands to `.bashrc` to set t
 
 
 ## 3D mapping
-**Setup**<br/>
+### Prerequisites on Robotont on-board computer
+ * [RTAB-Map ROS Wrapper](http://wiki.ros.org/rtabmap)
 
-*You only need to run these commands if this is the first time you you run this demo with the current user PC or ROBOTONT on-board computer.*
-
-**On Robotont on-board computer**, install ROS wrapper of RTAB-Map<br/>
+This dependency can be obtained from apt by entering the following commands:
 
 ```bash
 sudo apt update
-sudo apt install ros-melodic-rtabmap-ros
+sudo apt install ros-noetic-rtabmap-ros
 ```
 
-**Launching the demo**<br/>
+### Launching the demo
 
 **On Robotont on-board computer**, launch 3d_mapping.launch<br/>
 ```bash
@@ -86,48 +85,44 @@ roslaunch robotont_demos 3d_mapping_display.launch
 ```
 
 ## 2D mapping
-**Setup**<br/>
+### Prerequisites installed on the Robotont on-board computer
+ * [gmapping](https://wiki.ros.org/gmapping)
+ * [cartographer ROS Integration (optional)](https://google-cartographer-ros.readthedocs.io/en/latest/)
+ * [hector slam (optional)](http://wiki.ros.org/hector_slam)
 
-*You only need to run these commands if this is the first time you you run this demo with the current user PC or ROBOTONT on-board computer.*
-
-**On Robotont on-board computer**, install the following packages:<br/>
-
+To install gmapping, enter the following commands:<br/>
 ```bash
 sudo apt update
-sudo apt install ros-melodic-depthimage-to-laserscan
-sudo apt install ros-melodic-cartographer-ros
-sudo apt install ros-melodic-move-base
+sudo apt install ros-noetic-gmapping
 ```
 
-**Launching the demo**<br/>
 
-**On Robotont on-board computer**, launch 2d_slam.launch<br/>
+### Launching the demo
+
+**On Robotont on-board computer**
+
+Start the 2D SLAM:
 ```bash
 roslaunch robotont_demos 2d_slam.launch
 ```
 
-To change the mapping method to gmapping or hector_slam, change the mapping_method argument. For example, to use gmapping:
+If hector_slam or cartographer have been installed in Robotont, one can select a different method with a **mapping_method** argument. For example, to use the default gmapping:
 
 ```bash
 roslaunch robotont_demos 2d_slam.launch mapping_method:=gmapping
 ```
 
-**On PC**, launch 2d_slam_display.launch to visualize the result<br/>
+**On PC**, visualize the result in RViz with:<br/>
 ```bash
 roslaunch robotont_demos 2d_slam_display.launch
 ```
 
 ## AR tracking
 
-*You only need to run these commands if this is the first time you you run this demo with the current user PC or ROBOTONT on-board computer.*
+### Prerequisites installed on the Robotont on-board computer
+ * [ar_track_alvar](http://wiki.ros.org/ar_track_alvar)
 
-**On Robotont on-board computer**, install ROS wrapper for alvar<br/>
-```bash
-sudo apt update
-sudo apt install ros-melodic-ar-track-alvar
-```
-
-**Launching the demo**<br/>
+### Launching the demo
 
 **On Robotont on-board computer**, launch ar_follow_the_leader.launch (change 5 with the AR tag number you intend to follow)<br/>
 ```bash
