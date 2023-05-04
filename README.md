@@ -1,11 +1,11 @@
 # robotont\_demos
 This repository is a ROS package that contains various demos showing the capabilities of the Robotont platform
 
-[![Build Status](https://travis-ci.org/robotont/robotont_demos.svg?branch=melodic-devel)](https://travis-ci.org/robotont/robotont_demos)
+[![Build Status](https://github.com/robotont/robotont_demos/actions/workflows/industrial_ci_action.yml/badge.svg)](https://github.com/robotont/robotont_demos/actions/workflows/industrial_ci_action.yml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Before you begin
-To run the demos it is necessary to have a Robotont robot and a user PC with Ubuntu Linux and ROS Melodic installed.
+To run the demos it is necessary to have a Robotont robot and a user PC with Ubuntu Linux and ROS Noetic installed.
 
 There are two approaches to get the Robotont and PC into the same ROS environment. A common prerequisite for both methods is that the hosts are connected to the same network. In the following examples, we assume the Robotont and the PC having the following configuration:
 
@@ -69,7 +69,7 @@ Similarly to the hostname based setup, append the commands to `.bashrc` to set t
 
 ```bash
 sudo apt update
-sudo apt install ros-melodic-rtabmap-ros
+sudo apt install ros-noetic-rtabmap-ros
 ```
 
 **Launching the demo**<br/>
@@ -94,9 +94,9 @@ roslaunch robotont_demos 3d_mapping_display.launch
 
 ```bash
 sudo apt update
-sudo apt install ros-melodic-depthimage-to-laserscan
-sudo apt install ros-melodic-cartographer-ros
-sudo apt install ros-melodic-move-base
+sudo apt install ros-noetic-depthimage-to-laserscan
+sudo apt install ros-noetic-cartographer-ros
+sudo apt install ros-noetic-move-base
 ```
 
 **Launching the demo**<br/>
@@ -124,7 +124,7 @@ roslaunch robotont_demos 2d_slam_display.launch
 **On Robotont on-board computer**, install ROS wrapper for alvar<br/>
 ```bash
 sudo apt update
-sudo apt install ros-melodic-ar-track-alvar
+sudo apt install ros-noetic-ar-track-alvar
 ```
 
 **Launching the demo**<br/>
