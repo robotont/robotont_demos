@@ -19,12 +19,13 @@ namespace robotont
     joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 10, &TeleopJoy::joyCallback, this);
     timer = nh_.createTimer(ros::Duration(0.1), &TeleopJoy::timerCallback, this);
     last_joy_time = ros::Time::now();
+    nh_.param("teleop_joy/deadman_switch", deadman_switch_, 9);
   }
 
   void TeleopJoy::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
   {
-    // check the deadman's switch
-    if (!joy->buttons[5])
+    // check the deadman's switch, use -1 for disabling this feature
+    if (deadman_switch_ >= 0 && !joy->buttons[deadman_switch_])
     {
       return;  // We have a problem
     }
@@ -34,7 +35,7 @@ namespace robotont
     geometry_msgs::Twist twist;
     twist.linear.x = joy->axes[1];
     twist.linear.y = joy->axes[0];
-    twist.angular.z = joy->axes[3];
+    twist.angular.z = joy->axes[2];
 
     vel_pub_.publish(twist);
     ROS_DEBUG_STREAM(twist);

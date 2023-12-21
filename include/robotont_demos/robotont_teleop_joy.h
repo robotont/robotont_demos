@@ -21,6 +21,7 @@ namespace robotont
     ros::Subscriber joy_sub_;
     ros::Timer timer;
     ros::Time last_joy_time;
+    int deadman_switch_;
   };
 }  // namespace robotont
 #endif
