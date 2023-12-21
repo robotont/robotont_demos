@@ -4,6 +4,10 @@ This repository is a ROS package that contains various demos showing the capabil
 [![Build Status](https://github.com/robotont/robotont_demos/actions/workflows/industrial_ci_action.yml/badge.svg)](https://github.com/robotont/robotont_demos/actions/workflows/industrial_ci_action.yml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+> [!WARNING]  
+> This repository is no longer actively maintained, as its functionality has been transferred to a dedicated organization called [robotont-demos](https://github.com/robotont-demos).
+
+
 ## Before you begin
 To run the demos it is necessary to have a Robotont robot and a user PC with Ubuntu Linux and ROS Noetic installed.
 
